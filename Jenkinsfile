@@ -6,7 +6,7 @@ pipeline {
        appRegistry = "857459973995.dkr.ecr.ap-northeast-1.amazonaws.com/202052330_cluster_project>"
        capstoneRegistry = "https://857459973995.dkr.ecr.ap-northeast-1.amazonaws.com"
        cluster = "202052330_cluster_project"
-       service = "202052330_clustur_project"
+       service = "202052330_project"
    }
 
     stages {
@@ -47,7 +47,7 @@ pipeline {
                 branch "master"
          }
          steps{
-            withAWS(credentials: '202052330', region: 'ap-northeast-1'){
+            withAWS(credentials:'202052330', region:'ap-northeast-1'){
                 sh 'aws ecs update-service --cluster ${cluster} --service ${service} --force-new-deployment'
             }
          }
